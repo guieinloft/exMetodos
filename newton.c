@@ -15,7 +15,7 @@ double d(double f(double), double x){
 }
 
 double f(double x){
-	return pow(x, 3) - 2 * pow(x, 2) - 4 * x + 4;
+	return pow(x, 5) + 0.725616 * pow(x, 4) - 18.8815 * pow(x, 3) - 0.872976 * pow(x, 2) + 53.87 * x - 16.4925;
 }
 
 int main(){
@@ -23,13 +23,14 @@ int main(){
 	double x, x_prev, f_x, df_x, er;
 
 	x = 0.5;
-	printf("%d: %lf \t %lf \t %lf \n", i, x, f(x), d(f, x));
+	printf("k\t x\t\t\t f(x)\t\t\t d(f, x)\t\t\t er\n");
+	printf("0\t %.9E \t %.9E \t %.9E \t --- \n", x, f(x), d(f, x));
 	do{
 		if(f(x) == 0.0) break;
 		x_prev = x;
 		x = x_prev - f(x_prev)/d(f, x_prev);
 		er = fabs(x - x_prev)/fabs(x);
-		printf("%d: %lf \t %lf \t %lf \t %lf \n", i, x, f(x), d(f, x), er);
+		printf("%d\t %.9E \t %.9E \t %.9E \t %.9E \n", i, x, f(x), d(f, x), er);
 		i++;
 	}
 	while(er > PREC);

@@ -7,7 +7,7 @@ int sign(double v){
 }
 
 double f(double x){
-	return pow(x, 3) - 2 * pow(x, 2) - 4 * x + 4;
+	return pow(x, 5) + 0.725616 * pow(x, 4) - 18.8815 * pow(x, 3) - 0.872976 * pow(x, 2) + 53.87 * x - 16.4925;
 }
 
 int main(){
@@ -16,7 +16,8 @@ int main(){
 	scanf("%lf %lf", &a, &b);
 
 	x = (a + b)/2;
-	printf("%d: %lf \t %lf \t %lf \t %lf \n", i, a, x, b, f(x));
+	printf("k\t a\t\t\t x\t\t\t b\t\t\t f(a)\t\t\t f(x)\t\t\t f(b)\t\t\t er\n");
+	printf("%d\t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t ---\n", i, a, x, b, f(a), f(x), f(b));
 	do{
 		if(f(x) == 0.0) break;
 		else {
@@ -26,8 +27,9 @@ int main(){
 		x_prev = x;
 		x = (a + b)/2;
 		er = fabs(x - x_prev)/fabs(x);
-		printf("%d: %lf \t %lf \t %lf \t %lf \t %lf \n", i, a, x, b, f(x), er);
+        i++;
+		printf("%d\t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t %.9E\n", i, a, x, b, f(a), f(x), f(b), er);
 	}
-	while(er > 0.001);
+	while(er > pow(10, -6));
 	return 0;
 }
