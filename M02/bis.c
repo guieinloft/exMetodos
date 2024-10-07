@@ -11,13 +11,13 @@ double f(double x){
 }
 
 int main(){
-	int i = 1;
+	int i = 0;
 	double a, b, x, x_prev, f_x, f_a, f_b, er;
 	scanf("%lf %lf", &a, &b);
 
 	x = (a + b)/2;
-	printf("k\t a\t\t\t x\t\t\t b\t\t\t f(a)\t\t\t f(x)\t\t\t f(b)\t\t\t er\n");
-	printf("%d\t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t ---\n", i, a, x, b, f(a), f(x), f(b));
+	printf("k  a                 x                 b                 f(a)              f(x)              f(b)              er\n");
+	printf("%02d %+.10E %+.10E %+.10E %+.10E %+.10E %+.10E ---\n", i, a, x, b, f(a), f(x), f(b));
 	do{
 		if(f(x) == 0.0) break;
 		else {
@@ -28,7 +28,7 @@ int main(){
 		x = (a + b)/2;
 		er = fabs(x - x_prev)/fabs(x);
         i++;
-		printf("%d\t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \t %.9E\n", i, a, x, b, f(a), f(x), f(b), er);
+		printf("%02d %+.10E %+.10E %+.10E %+.10E %+.10E %+.10E %+.10E\n", i, a, x, b, f(a), f(x), f(b), er);
 	}
 	while(er > pow(10, -6));
 	return 0;

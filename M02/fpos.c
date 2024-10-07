@@ -22,11 +22,11 @@ int main(){
 	int i = 1;
 	double x, x_prev, a, b, er;
 
-	a = 0;
-    b = 1;
+	a = 1;
+    b = 3;
     x = a - (b - a) / (f(b) - f(a)) * f(a);
-	printf("k\t a\t\t\t x\t\t\t b\t\t\t f(x)\t\t\t er\n");
-	printf("0\t %.9E \t %.9E \t %.9E \t %.9E \t --- \n", a, x, b, f(x));
+	printf("k  a                 x                 b                 f(x)              er\n");
+	printf("00 %+.10E %+.10E %+.10E %+.10E --- \n", a, x, b, f(x));
 	do{
 		if(f(x) == 0.0) break;
         else if(sign(f(x)) == sign(f(a))) a = x;
@@ -34,7 +34,7 @@ int main(){
         x_prev = x;
         x = a - (b - a) / (f(b) - f(a)) * f(a);
 		er = fabs(x - x_prev)/fabs(x);
-	    printf("%d\t %.9E \t %.9E \t %.9E \t %.9E \t %.9E \n", i, a, x, b, f(x), er);
+	    printf("%02d %+.10E %+.10E %+.10E %+.10E %+.10E \n", i, a, x, b, f(x), er);
 		i++;
 	}
 	while(er > PREC);
