@@ -14,16 +14,6 @@ int sign(double v){
 	return (0.0 < v) - (v < 0.0);
 }
 
-double d(double f(double), double x){
-	double y1 = f(x - PREC);
-	double y2 = f(x + PREC);
-	return (y2 - y1)/(x + PREC - x + PREC);
-}
-
-double f(double x){
-	return pow(x, 5) + 0.725616 * pow(x, 4) - 18.8815 * pow(x, 3) - 0.872976 * pow(x, 2) + 53.87 * x - 16.4925;
-}
-
 polynomial create_p(int degree, ...){
 	polynomial p;
 	p.degree = degree;
@@ -88,7 +78,7 @@ int main(){
 		if (b.coeficients[b.degree] == 0.0) break;
 		x = x_prev - b.coeficients[b.degree]/c.coeficients[c.degree];
 		er = fabs(x - x_prev)/fabs(x);
-		printf("x%d: %+.10E %+.10E %+.10E %+.10E \n\n", i, x, f(x), d(f, x), er);
+		printf("x%d: %+.10E %+.10E %+.10E %+.10E \n\n", i, x, b.coeficients[b.degree], c.coeficients[c.degree], er);
 		i++;
 	}
 	while(er > pow(10, -6));
