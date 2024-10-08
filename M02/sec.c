@@ -19,12 +19,12 @@ int main(){
 	x_pp = 0;
 	x_p = 0.2;
 	x = x_p - f(x_p)*(x_p - x_pp)/(f(x_p) - f(x_pp));
-	printf("k  x                 f(x)              er\n");
-	printf("%02d %+.10E %+.10E --- \n", 0, x_pp, f(x_pp));
+	printf("k  x                f(x)             er\n");
+	printf("%02d %+.9E %+.9E --- \n", 0, x_pp, f(x_pp));
 	er = fabs(x_p - x_pp)/fabs(x);
-	printf("%02d %+.10E %+.10E %+.10E \n", 1, x_p, f(x_p), er);
+	printf("%02d %+.9E %+.9E %+.9E \n", 1, x_p, f(x_p), er);
 	er = fabs(x - x_p)/fabs(x);
-	printf("%02d %+.10E %+.10E %+.10E \n", i, x, f(x), er);
+	printf("%02d %+.9E %+.9E %+.9E \n", i, x, f(x), er);
 	i++;
 	do{
 		if(f(x) == 0.0) break;
@@ -32,7 +32,7 @@ int main(){
 		x_p = x;
 		x = x_p - f(x_p)*(x_p - x_pp)/(f(x_p) - f(x_pp));
 		er = fabs(x - x_p)/fabs(x);
-		printf("%02d %+.10E %+.10E %+.10E \n", i, x, f(x), er);
+		printf("%02d %+.9E %+.9E %+.9E \n", i, x, f(x), er);
 		i++;
 	}
 	while(er > PREC);

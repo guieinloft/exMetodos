@@ -9,9 +9,9 @@ int sign(double v){
 }
 
 double d(double f(double), double x){
-	double y1 = f(x);
+	double y1 = f(x - PREC);
 	double y2 = f(x + PREC);
-	return (y2 - y1)/(PREC);
+	return (y2 - y1)/(PREC + PREC);
 }
 
 double f(double x){
@@ -22,15 +22,15 @@ int main(){
 	int i = 1;
 	double x, x_prev, f_x, df_x, er;
 
-	x = 3.5;
-	printf("k  x                 f(x)              f'(x)             er\n");
-	printf("00 %+.10E %+.10E %+.10E ---\n", x, f(x), d(f, x));
+	x = -2;
+	printf("k  x                f(x)             f'(x)            er\n");
+	printf("00 %+.9E %+.9E %+.9E ---\n", x, f(x), d(f, x));
 	do{
 		if(f(x) == 0.0) break;
 		x_prev = x;
 		x = x_prev - f(x_prev)/d(f, x_prev);
 		er = fabs(x - x_prev)/fabs(x);
-		printf("%02d %+.10E %+.10E %+.10E %+.10E\n", i, x, f(x), d(f, x), er);
+		printf("%02d %+.9E %+.9E %+.9E %+.9E\n", i, x, f(x), d(f, x), er);
 		i++;
 	}
 	while(er > PREC);

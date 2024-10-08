@@ -25,8 +25,8 @@ int main(){
 	a = 1;
     b = 3;
     x = a - (b - a) / (f(b) - f(a)) * f(a);
-	printf("k  a                 x                 b                 f(x)              er\n");
-	printf("00 %+.10E %+.10E %+.10E %+.10E --- \n", a, x, b, f(x));
+	printf("k  a                x                b                f(x)             er\n");
+	printf("00 %+.9E %+.9E %+.9E %+.9E --- \n", a, x, b, f(x));
 	do{
 		if(f(x) == 0.0) break;
         else if(sign(f(x)) == sign(f(a))) a = x;
@@ -34,7 +34,7 @@ int main(){
         x_prev = x;
         x = a - (b - a) / (f(b) - f(a)) * f(a);
 		er = fabs(x - x_prev)/fabs(x);
-	    printf("%02d %+.10E %+.10E %+.10E %+.10E %+.10E \n", i, a, x, b, f(x), er);
+	    printf("%02d %+.9E %+.9E %+.9E %+.9E %+.9E \n", i, a, x, b, f(x), er);
 		i++;
 	}
 	while(er > PREC);

@@ -23,7 +23,7 @@ polynomial create_p(int degree, ...){
 	printf("P(x): ");  
 	for(int i = 0; i <= degree; i++){
 		p.coeficients[i] = va_arg(args, double);
-		printf("%+.10E ", p.coeficients[i]);
+		printf("%+.9E ", p.coeficients[i]);
 	}
 	va_end(args);
 	printf("\n\n");
@@ -35,10 +35,10 @@ polynomial find_b(polynomial p, double x0, int k){
 	b.degree = p.degree;
 	b.coeficients = (double*)malloc(sizeof(double) * (b.degree + 1));
 	b.coeficients[0] = p.coeficients[0];
-	printf("b%d: %+.10E ", k, b.coeficients[0]);
+	printf("b%d: %+.9E ", k, b.coeficients[0]);
 	for(int i = 1; i <= b.degree; i++){
 		b.coeficients[i] = p.coeficients[i] + b.coeficients[i-1] * x0;
-		printf("%+.10E ", b.coeficients[i]);
+		printf("%+.9E ", b.coeficients[i]);
 	}
 	printf("\n");
 	return b;
@@ -49,10 +49,10 @@ polynomial find_c(polynomial b, double x0, int k){
 	c.degree = b.degree - 1;
 	c.coeficients = (double*)malloc(sizeof(double) * (c.degree + 1));
 	c.coeficients[0] = b.coeficients[0];
-	printf("c%d: %+.10E ", k, c.coeficients[0]);
+	printf("c%d: %+.9E ", k, c.coeficients[0]);
 	for(int i = 1; i <= c.degree; i++){
 		c.coeficients[i] = b.coeficients[i] + c.coeficients[i-1] * x0;
-		printf("%+.10E ", c.coeficients[i]);
+		printf("%+.9E ", c.coeficients[i]);
 	}
 	printf("\n");
 	return c;
@@ -62,7 +62,7 @@ polynomial find_c(polynomial b, double x0, int k){
 
 
 int main(){
-	int i = 1;
+	int i = 0;
 	double x, x_prev, f_x, df_x, er;
 
 	polynomial p = create_p(5, 1.0, 0.725616, -18.8815, -0.872976, 53.87, -16.4925);
@@ -70,17 +70,17 @@ int main(){
 	polynomial c;
 
 	x = 3.5;
-	printf("x%d: %+.10E \n\n", 0, x);
 	do{
 		x_prev = x;
 		b = find_b(p, x, i);
 		c = find_c(b, x, i);
 		if (b.coeficients[b.degree] == 0.0) break;
+		printf("x%d: %+.9E %+.9E %+.9E %+.9E \n\n", i, x, b.coeficients[b.degree], c.coeficients[c.degree], er);
 		x = x_prev - b.coeficients[b.degree]/c.coeficients[c.degree];
 		er = fabs(x - x_prev)/fabs(x);
-		printf("x%d: %+.10E %+.10E %+.10E %+.10E \n\n", i, x, b.coeficients[b.degree], c.coeficients[c.degree], er);
 		i++;
 	}
-	while(er > pow(10, -6));
+	while(er > PREC);
+	printf("x%d: %+.9E ---------------- ---------------- %+.9E \n\n", i, x, b.coeficients[b.degree], c.coeficients[c.degree], er);
 	return 0;
 }

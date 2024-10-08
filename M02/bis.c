@@ -16,8 +16,8 @@ int main(){
 	scanf("%lf %lf", &a, &b);
 
 	x = (a + b)/2;
-	printf("k  a                 x                 b                 f(a)              f(x)              f(b)              er\n");
-	printf("%02d %+.10E %+.10E %+.10E %+.10E %+.10E %+.10E ---\n", i, a, x, b, f(a), f(x), f(b));
+	printf("k  a                x                b                f(a)             f(x)             f(b)             er\n");
+	printf("%02d %+.9E %+.9E %+.9E %+.9E %+.9E %+.9E ---\n", i, a, x, b, f(a), f(x), f(b));
 	do{
 		if(f(x) == 0.0) break;
 		else {
@@ -28,7 +28,7 @@ int main(){
 		x = (a + b)/2;
 		er = fabs(x - x_prev)/fabs(x);
         i++;
-		printf("%02d %+.10E %+.10E %+.10E %+.10E %+.10E %+.10E %+.10E\n", i, a, x, b, f(a), f(x), f(b), er);
+		printf("%02d %+.9E %+.9E %+.9E %+.9E %+.9E %+.9E %+.9E\n", i, a, x, b, f(a), f(x), f(b), er);
 	}
 	while(er > pow(10, -6));
 	return 0;
