@@ -18,7 +18,7 @@ void troca_linha(double a[N][N+1], int l1, int l2){
 	}
 }
 
-void troca_coluna(double a[N][N+1], x *xarray[N], int l1, int l2){
+void troca_coluna(double a[N][N+1], x xarray[N], int l1, int l2){
 	double temp;
 	for(int i = 0; i < N; i++){
 		temp = a[i][l1];
@@ -30,7 +30,7 @@ void troca_coluna(double a[N][N+1], x *xarray[N], int l1, int l2){
 	xarray[l2].k = itemp;
 }
 
-void start_xarray(x *xarray[N]){
+void start_xarray(x xarray[4]){
 	for(int i = 0; i < N; i++) xarray[i].k = i;
 }
 
@@ -43,7 +43,7 @@ int main(){
 			{-18.0, 2.0, 18.0, -7.0, 6.0}};
 
 	x xarray[N];
-	start_xarray(&xarray);
+	start_xarray(xarray);
 
 	//iterando sobre a matriz
 	for(i = 0; i < N-1; i++){
@@ -84,7 +84,7 @@ int main(){
 		xarray[i].v /= a[i][i];	
 	}
 	for(i = 0; i < N; i++){
-		printf("%+.10E ", x[i]);
+		printf("%+.10E ", xarray[i].v);
 	}
 	printf("\n");
 
