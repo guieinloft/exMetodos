@@ -7,12 +7,9 @@
 void le_matriz(double a[N][N+1]){
     int temp;
     for(int i = 0; i < N; i++){
-        for(int j = 0; j < N; j++){
+        for(int j = 0; j <= N; j++){
             fscanf(stdin, "%lf", &a[i][j]);
         }
-    }
-    for(int i = 0; i < N; i++){
-        fscanf(stdin, "%lf", &a[i][N]);
     }
 }
 
@@ -79,7 +76,7 @@ int main(){
 		x[i] /= a[i][i];	
 	}
 	for(i = 0; i < N; i++){
-		printf("x_%d: %+.10E\n", i+1, x[i]);
+		printf("%+.10E ", x[i]);
 	}
 	printf("\n");
 
