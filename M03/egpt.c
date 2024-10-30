@@ -24,7 +24,7 @@ void le_matriz(double a[N][N+1]){
 void mostra_matriz(double a[N][N+1]){
 	for(int i = 0; i < N; i++){
 		for(int j = 0; j < N+1; j++){
-			printf("%+.10E ", a[i][j]);
+			printf("%+.9E ", a[i][j]);
 		}
 		printf("\n");
 	}
@@ -100,9 +100,9 @@ int main(){
 			a[j][i] = 0.0;
 			for(k = i+1; k <= N; k++) a[j][k] += (-mult * a[i][k]);	
 		}
+        printf("A_%d:\n", i+1);
         mostra_matriz(a);
 	}
-    mostra_matriz(a);
 
 	//resolvendo os sistemas formados
 	for(i = N-1; i > -1; i--){
@@ -114,7 +114,7 @@ int main(){
 	}
     ordena_xarray(xarray);
 	for(i = 0; i < N; i++){
-		printf("x_%d: %+.10E\n", (xarray[i].k)+1, xarray[i].v);
+		printf("x_%d: %.10g\n", (xarray[i].k)+1, xarray[i].v);
 	}
 	printf("\n");
 

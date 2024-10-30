@@ -34,6 +34,9 @@ void jacobi(double a[N][N], double b[N], double x[N]){
     double xp[N], err[N], soma, err_max = 10;
     int i, j, k = 1;
     for(i = 0; i < N; i++) xp[i] = 0.0;
+    printf("x_00: ");
+    mostra_array(xp);
+    printf("E_00: ---              ---              ---              ---              ---              ---              ---              \n\n");
 
     while(err_max > PREC){
         for(i = 0; i < N; i++){

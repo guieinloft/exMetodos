@@ -19,7 +19,7 @@ void le_matriz(double a[N][N+1]){
 void mostra_matriz(double a[N][N+1]){
 	for(int i = 0; i < N; i++){
 		for(int j = 0; j < N+1; j++){
-			printf("%+.10E ", a[i][j]);
+			printf("%+.9E ", a[i][j]);
 		}
 		printf("\n");
 	}
@@ -60,13 +60,8 @@ int main(){
 			a[j][i] = 0.0;
 			for(k = i+1; k <= N; k++) a[j][k] += (-mult * a[i][k]);	
 		}
+        printf("A_%d:\n", i+1);
         mostra_matriz(a);
-	}
-	for(i = 0; i < N; i++){
-		for(j = 0; j < N+1; j++){
-			printf("%+.10E ", a[i][j]);
-		}
-		printf("\n");
 	}
 	printf("\n");
 
@@ -79,7 +74,7 @@ int main(){
 		x[i] /= a[i][i];	
 	}
 	for(i = 0; i < N; i++){
-		printf("x_%d: %+.10E\n", i+1, x[i]);
+		printf("x_%d: %.10g\n", i+1, x[i]);
 	}
 	printf("\n");
 
