@@ -86,10 +86,10 @@ int main(int argc, char **argv) {
         if (cont_g2) er_g2 = fabs((area_g2 - area_ant_g2)/area_g2);
         if (cont_g3) er_g3 = fabs((area_g3 - area_ant_g3)/area_g3);
         printf("%02d ", i);
-        printf("% 16.10g % 16.10g ", area_trap, er_trap);
-        printf("% 16.10g % 16.10g ", area_simp, er_simp);
-        printf("% 16.10g % 16.10g ", area_g2, er_g2);
-        printf("% 16.10g % 16.10g\n", area_g3, er_g3);
+        printf("%+ 16.10g %+ 16.10g ", area_trap, er_trap);
+        printf("%+ 16.10g %+ 16.10g ", area_simp, er_simp);
+        printf("%+ 16.10g %+ 16.10g ", area_g2, er_g2);
+        printf("%+ 16.10g %+ 16.10g\n", area_g3, er_g3);
         cont_trap = er_trap >= PREC;
         cont_simp = er_simp >= PREC;
         cont_g2 = er_g2 >= PREC;
