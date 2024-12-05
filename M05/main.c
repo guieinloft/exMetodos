@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
     r = (b - a) / 4;
 
     i = 0;
-    printf("k               A_T             ER_T              A_S             ER_S             A_G2            ER_G2             A_G3            ER_G3\n");
+    printf("% 2s % 34s % 33s % 33s % 33s\n", "k", "TRAPÉZIO", "SIMPSON", "GAUSS 2 pts.", "GAUSS 3 pts.");
     do {
         area_ant_trap = area_trap * cont_trap;
         area_ant_simp = area_simp * cont_simp;
